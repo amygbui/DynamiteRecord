@@ -7,7 +7,6 @@ end
 module Validation
   def validates(*column_names, options)
   end
-
 end
 
 class SQLObject

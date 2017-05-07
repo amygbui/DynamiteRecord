@@ -1,7 +1,35 @@
-require_relative '03_associatable'
+require_relative 'assoc_options'
 require 'active_support/inflector'
 
 module Associatable
+  def belongs_to(name, options = {})
+    options = BelongsToOptions.new(name, options)
+
+    define_method(name) do
+      object = options.model_class
+      foreign_key = self.send(options.foreign_key)
+      object.where(options.primary_key => foreign_key).first
+    end
+
+    assoc_options[name] = options
+  end
+
+  def has_many(name, options = {})
+    options = HasManyOptions.new(name, self, options)
+
+    define_method(name) do
+      object = options.model_class
+      foreign_key = self.send(options.primary_key)
+      all = object.where(options.foreign_key => foreign_key)
+    end
+
+    assoc_options[name] = options
+  end
+
+  def assoc_options
+    @assoc_options ||= {}
+  end
+
   def has_one_through(name, through_name, source_name)
     define_method(name) do
       through_options = self.class.assoc_options[through_name]
@@ -96,4 +124,8 @@ module Associatable
       source_options.model_class.parse_all(results)
     end
   end
+end
+
+class SQLObject
+  extend Associatable
 end
