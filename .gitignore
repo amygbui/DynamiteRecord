@@ -3,3 +3,4 @@
 spec/
 .respec
 lib/validator.rb
+.rspec

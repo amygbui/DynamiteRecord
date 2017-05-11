@@ -9,12 +9,43 @@ To see this library in action, follow these steps:
 3. Run `load 'demo.rb'`
 4. Test it out!
 
+For your reference, here are the tables in the demo database:
+
+### Gyms
+Column          | Data Type | Details
+--------------- | --------- | -------
+id              | integer   | not null, primary key
+name            | string    | not null
+
+### Trainers
+Column          | Data Type | Details
+--------------- | --------- | -------
+id              | integer   | not null, primary key
+name            | string    | not null
+gym_id          | integer   |
+
+### Pokemon
+Column          | Data Type | Details
+--------------- | --------- | -------
+id              | integer   | not null, primary key
+name            | string    | not null
+type            | string    | not null
+trainer_id      | integer   | not null
+
+## Use in Private Project
+Want to use this library for your own database? Follow these steps:
+1. Download the contents of the lib folder
+2. Change `demo.sql` file to your own SQLite3 table file.
+3. Replace `demo.db` with what you want your database file name to be
+4. Start making models!
+
 ## Libraries
 * SQLite3 (gem)
 * ActiveSupport::Inflector
 
 ## List of Features
 * Defines getter and setter methods for all columns in a table, allowing easy access to data
+* Has custom "tableize" method to turn model names into table names ****
 
 ## DynamiteRecord Methods
 * `all` - returns a DynamiteRecord object for each and every row within the object's table in the database
@@ -26,9 +57,6 @@ To see this library in action, follow these steps:
 * `update` - updates the database with the DynamiteRecord object's current attributes
 * `save` - inserts or updates the database with the DynamiteRecord object's current attributes
 * `belongs_to(name, options)` - creates an association between two tables, where the current model class holds the foreign key referencing the other table
- <!-- - creates a BelongsToOptions instance to create an association between two database tables; then, it creates an association with 'name' to access the associated object -->
 * `has_many(name, options)` - creates an association between two tables, where the other model class holds the foreign key pointing to the current model's table
-<!-- - creates an HasManyOptions instance to create an association between two database tables; then, it creates an association with 'name' to access the associated objects -->
 * `has_one_through(name, through_name, source_name)` - creates an association between two tables (current model class table and source table), with an intermediary table (through) joining the two tables (traverses through two belongs_to assocations)
- <!-- - creates an association between two objects through an existing assocation. Goes through two ::belongs_to methods in order to access the associated object. Then, defines a method as an association with 'name' to access the associated object. -->
 * `has_many_through(name, through_name, source_name)` - creates an association between two tables (current model class table and source table), with an intermediary table (through) joining the two tables (traverses through two has_many associations)
