@@ -25,10 +25,10 @@ To see this library in action, follow these steps:
 * `insert` - inserts a new row into the database with the DynamiteRecord object's attributes
 * `update` - updates the database with the DynamiteRecord object's current attributes
 * `save` - inserts or updates the database with the DynamiteRecord object's current attributes
-* `belongs_to(name, options)`
+* `belongs_to(name, options)` - creates an association between two tables, where the current model class holds the foreign key referencing the other table
  <!-- - creates a BelongsToOptions instance to create an association between two database tables; then, it creates an association with 'name' to access the associated object -->
-* `has_many(name, options)`
+* `has_many(name, options)` - creates an association between two tables, where the other model class holds the foreign key pointing to the current model's table
 <!-- - creates an HasManyOptions instance to create an association between two database tables; then, it creates an association with 'name' to access the associated objects -->
-* `has_one_through(name, through_name, source_name)`
+* `has_one_through(name, through_name, source_name)` - creates an association between two tables (current model class table and source table), with an intermediary table (through) joining the two tables (traverses through two belongs_to assocations)
  <!-- - creates an association between two objects through an existing assocation. Goes through two ::belongs_to methods in order to access the associated object. Then, defines a method as an association with 'name' to access the associated object. -->
-* `has_many_through(name, through_name, source_name)`
+* `has_many_through(name, through_name, source_name)` - creates an association between two tables (current model class table and source table), with an intermediary table (through) joining the two tables (traverses through two has_many associations)
