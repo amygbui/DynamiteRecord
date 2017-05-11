@@ -35,8 +35,8 @@ trainer_id      | integer   | not null
 ## Use in Private Project
 Want to use this library for your own database? Follow these steps:
 1. Download the contents of the lib folder
-2. Change `demo.sql` file to your own SQLite3 table file.
-3. Replace `demo.db` with what you want your database file name to be
+2. Change `demo.sql` file to your own SQLite3 table file in `db_connection`
+3. Replace `demo.db` with what you want your database file name to be in `db_connection`
 4. Start making models!
 
 ## Libraries
