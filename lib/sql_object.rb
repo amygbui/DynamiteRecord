@@ -1,7 +1,13 @@
 require_relative 'db_connection'
+require_relative 'searchable'
+require_relative 'associatable'
+
 require 'active_support/inflector'
 
 class SQLObject
+  extend Searchable
+  extend Associatable
+
   def self.columns
     @columns ||= DBConnection.execute2(<<-SQL).first.map(&:to_sym)
       SELECT DISTINCT
@@ -40,6 +46,19 @@ class SQLObject
       SQL
 
     self.parse_all(results)
+  end
+
+  def self.first
+    results = DBConnection.execute(<<-SQL)
+      SELECT
+        *
+      FROM
+        #{self.table_name}
+      LIMIT
+        1
+      SQL
+
+    self.parse_all(results)[0]
   end
 
   def self.parse_all(results)

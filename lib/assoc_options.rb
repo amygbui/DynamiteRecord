@@ -1,4 +1,5 @@
 require_relative 'searchable'
+# Do I need this here if it's all required in SQLObject?
 require 'active_support/inflector'
 
 class AssocOptions

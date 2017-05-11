@@ -2,3 +2,4 @@
 .DS_Store
 spec/
 .respec
+lib/validator.rb

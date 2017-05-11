@@ -80,7 +80,7 @@ module Associatable
 
   def has_many_through(name, through_name, source_name)
     # House has_many :cats, through: :humans, source: :cats
-    through_assoc = "humans".to_sym if through_name = "human"
+    through_assoc = "humans".to_sym if through_name == "human"
     through_assoc ||= through_name.to_s.tableize.to_sym
     source_assoc = source_name.to_s.tableize.to_sym
 
@@ -124,8 +124,4 @@ module Associatable
       source_options.model_class.parse_all(results)
     end
   end
-end
-
-class SQLObject
-  extend Associatable
 end

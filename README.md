@@ -6,7 +6,7 @@ DynamiteRecord is a custom object relational database library that creates and m
 To see this library in action, follow these steps:
 1. Clone this repository
 2. Load `irb` or `pry` in the terminal
-3. Run `load './demo.rb'`
+3. Run `load 'demo.rb'`
 4. Test it out!
 
 ## Libraries

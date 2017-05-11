@@ -1,6 +1,3 @@
-require_relative 'db_connection'
-require_relative 'sql_object'
-
 module Searchable
   def where(params)
     keys = params.keys.join(" = ? AND ")
@@ -16,8 +13,4 @@ module Searchable
 
     found_things.map { |found_thing| self.new(found_thing) }
   end
-end
-
-class SQLObject
-  extend Searchable
 end
