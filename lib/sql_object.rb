@@ -61,6 +61,10 @@ class SQLObject
     self.parse_all(results)[0]
   end
 
+  def self.last
+    self.all[-1]
+  end
+
   def self.parse_all(results)
     results.map { |result| self.new(result) }
   end

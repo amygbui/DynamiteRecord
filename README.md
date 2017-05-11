@@ -18,6 +18,8 @@ To see this library in action, follow these steps:
 
 ## DynamiteRecord Methods
 * `all` - returns a DynamiteRecord object for each and every row within the object's table in the database
+* `first` - returns first/oldest row inserted into a table
+* `last` - returns row most recently inserted into a table
 * `find(id)` - allows easy querying of rows via an `id` key; returns a DynamiteRecord object with the given id
 * `where(params)` - takes a hash as an argument and returns an array of DynamiteRecord objects that match the key/value pairs given.
 * `insert` - inserts a new row into the database with the DynamiteRecord object's attributes
@@ -29,4 +31,4 @@ To see this library in action, follow these steps:
 <!-- - creates an HasManyOptions instance to create an association between two database tables; then, it creates an association with 'name' to access the associated objects -->
 * `has_one_through(name, through_name, source_name)`
  <!-- - creates an association between two objects through an existing assocation. Goes through two ::belongs_to methods in order to access the associated object. Then, defines a method as an association with 'name' to access the associated object. -->
-* `has_many_through`
+* `has_many_through(name, through_name, source_name)`
