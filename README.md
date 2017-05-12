@@ -32,7 +32,7 @@ name            | string    | not null
 type            | string    | not null
 trainer_id      | integer   | not null
 
-## Use in Private Project
+## Use in Private Projects
 Want to use this library for your own database? Follow these steps:
 1. Download the contents of the lib folder
 2. Change `demo.sql` file to your own SQLite3 table file in `db_connection`
@@ -45,7 +45,7 @@ Want to use this library for your own database? Follow these steps:
 
 ## List of Features
 * Defines getter and setter methods for all columns in a table, allowing easy access to data
-* Has custom "tableize" method to turn model names into table names ****
+* Has custom "tableize" method to turn model names into table names
 
 ## DynamiteRecord Methods
 * `all` - returns a DynamiteRecord object for each and every row within the object's table in the database
