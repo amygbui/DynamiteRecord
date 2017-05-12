@@ -3,4 +3,5 @@
 spec/
 .respec
 lib/validator.rb
+lib/tableize.rb
 .rspec

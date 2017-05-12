@@ -1,5 +1,7 @@
 require_relative 'assoc_options'
 require 'active_support/inflector'
+# require_relative 'tableize'
+require 'byebug'
 
 module Associatable
   def belongs_to(name, options = {})
@@ -79,7 +81,7 @@ module Associatable
   end
 
   def has_many_through(name, through_name, source_name)
-    # House has_many :cats, through: :humans, source: :cats
+    # Gym has_many :pokemon, through: :trainers, source: :pokemon
     through_assoc = "humans".to_sym if through_name == "human"
     through_assoc ||= through_name.to_s.tableize.to_sym
     source_assoc = source_name.to_s.tableize.to_sym
@@ -89,22 +91,22 @@ module Associatable
       source_options = through_options
                        .model_class.assoc_options[source_assoc]
 
-      through_table = through_options.table_name # humans
-      through_primary_key = through_options.primary_key # human.id
-      through_foreign_key = through_options.foreign_key # cat.owner_id
+      through_table = through_options.table_name # trainers
+      through_primary_key = through_options.primary_key # trainer.id
+      through_foreign_key = through_options.foreign_key # pokemon.trainer_id
 
-      # Human belongs to a house, so it has foreign_key
-      source_table = source_options.table_name # cats
-      source_primary_key = source_options.primary_key # human.id
-      source_foreign_key = source_options.foreign_key # cats.house_id
+      # Pokemon belongs to a trainer, so it has foreign_key
+      source_table = source_options.table_name # pokemons
+      source_primary_key = source_options.primary_key # trainer.id
+      source_foreign_key = source_options.foreign_key # pokemon.house_id
 
       owner_key_val = self.send(through_primary_key)
 
       # SELECT *
-      # FROM humans
-      # JOIN cats
-      # ON humans.id = cats.owner_id
-      # WHERE houses.id = humans.house_id
+      # FROM trainers
+      # JOIN pokemon
+      # ON trainers.id = pokemon.owner_id
+      # WHERE gyms.id = trainers.house_id
 
       results = DBConnection.execute(<<-SQL, owner_key_val)
         SELECT

@@ -7,7 +7,7 @@ class Gym < SQLObject
     primary_key: :id,
     foreign_key: :gym_id
 
-  has_many_through :pokemons, :trainers, :pokemons
+  has_many_through :pokemons, :trainers, :pokemon
 
   finalize!
 end
