@@ -60,3 +60,6 @@ Want to use this library for your own database? Follow these steps:
 * `has_many(name, options)` - creates an association between two tables, where the other model class holds the foreign key pointing to the current model's table
 * `has_one_through(name, through_name, source_name)` - creates an association between two tables (current model class table and source table), with an intermediary table (through) joining the two tables (traverses through two belongs_to assocations)
 * `has_many_through(name, through_name, source_name)` - creates an association between two tables (current model class table and source table), with an intermediary table (through) joining the two tables (traverses through two has_many associations)
+
+## Future Directions for Project
+* [ ] Replace ActiveRecord Inflector with custom version

@@ -1,7 +1,6 @@
 require_relative 'assoc_options'
 require 'active_support/inflector'
 # require_relative 'tableize'
-require 'byebug'
 
 module Associatable
   def belongs_to(name, options = {})
